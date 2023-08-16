@@ -1,0 +1,44 @@
+<div>
+    <div *ngIf="!retrievedImage">
+        <h2 class="upload-title">Upload Profile Photo</h2>
+    </div>
+
+    <div *ngIf="!retrievedImage" class="upload-section">
+        <div>
+            <input type="file" (change)="onFileChanged($event)" class="file-input">
+            <img [src]="imgURL" height="200" *ngIf="imgURL" class="preview-image">
+        </div>
+        <div>
+            <button (click)="onUpload()" class="upload-button">Upload</button>
+        </div>
+        <div>
+            <div *ngIf="message" class="upload-message">{{ message }}</div>
+        </div>
+    </div>
+</div>
+
+<aside class="profile-card">
+    <header>
+        <div *ngIf="retrievedImage">
+            <img [src]="retrievedImage" alt="Profile Image">
+        </div>
+        <h1>{{user?.student.firstName}} {{user?.student.lastName}}</h1>
+    </header>
+
+    <div class="profile-body">
+
+        <p>
+            <span class="label">Level Of Study:</span>
+            <span class="value">{{ user?.student.levelOfStudy }}</span>
+        </p>
+        <p>
+            <span class="label">Program:</span>
+            <span class="value">{{ user?.student.program }}</span>
+        </p>
+        <p>
+            <span class="label">Faculty:</span>
+            <span class="value">{{ user?.student.faculty }}</span>
+        </p>
+
+    </div>
+</aside>
